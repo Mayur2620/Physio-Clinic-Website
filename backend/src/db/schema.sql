@@ -1,0 +1,56 @@
+CREATE TABLE IF NOT EXISTS site_content (
+  id TINYINT PRIMARY KEY DEFAULT 1,
+  clinic_name VARCHAR(191) NOT NULL,
+  clinic_description TEXT NOT NULL,
+  hero_title VARCHAR(191) NOT NULL,
+  hero_description TEXT NOT NULL,
+  about_title VARCHAR(191) NOT NULL,
+  about_description TEXT NOT NULL,
+  about_page_title VARCHAR(191) NOT NULL,
+  about_page_description TEXT NOT NULL,
+  services_page_title VARCHAR(191) NOT NULL,
+  services_page_description TEXT NOT NULL,
+  contact_heading VARCHAR(191) NOT NULL,
+  contact_description TEXT NOT NULL,
+  phone VARCHAR(64) NOT NULL,
+  email VARCHAR(191) NOT NULL,
+  address VARCHAR(191) NOT NULL,
+  whatsapp_text VARCHAR(191) NOT NULL,
+  trust_customers VARCHAR(32) NOT NULL,
+  trust_visitors VARCHAR(32) NOT NULL,
+  quick_stats JSON NOT NULL,
+  features JSON NOT NULL,
+  services JSON NOT NULL,
+  doctors JSON NOT NULL,
+  updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  CONSTRAINT single_row CHECK (id = 1)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS appointments (
+  id CHAR(36) PRIMARY KEY,
+  name VARCHAR(191) NOT NULL,
+  phone VARCHAR(64) NOT NULL,
+  email VARCHAR(191) NOT NULL,
+  service_type VARCHAR(191) NULL,
+  preferred_date DATE NULL,
+  message TEXT NULL,
+  status VARCHAR(32) NOT NULL DEFAULT 'New',
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS messages (
+  id CHAR(36) PRIMARY KEY,
+  name VARCHAR(191) NOT NULL,
+  contact VARCHAR(191) NULL,
+  subject VARCHAR(191) NULL,
+  message TEXT NOT NULL,
+  status VARCHAR(32) NOT NULL DEFAULT 'Unread',
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS admin_users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(64) NOT NULL UNIQUE,
+  password_hash VARCHAR(255) NOT NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

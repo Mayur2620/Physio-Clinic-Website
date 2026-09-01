@@ -1,0 +1,290 @@
+@keyframes innerFadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.inner-page {
+  min-height: 62vh;
+  padding: 126px 0 96px;
+  background: var(--clinic-page-bg);
+  color: var(--clinic-ink);
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+}
+
+.inner-hero {
+  max-width: 790px;
+  margin-bottom: 42px;
+  animation: innerFadeInUp 0.5s ease both;
+}
+
+.inner-hero span {
+  display: inline-flex;
+  margin-bottom: 14px;
+  color: var(--clinic-primary-dark);
+  font-size: 0.82rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.inner-hero h1 {
+  margin: 0 0 18px;
+  font-size: clamp(2.25rem, 5vw, 4.4rem);
+  font-weight: 900;
+  line-height: 1.03;
+}
+
+.inner-hero p {
+  max-width: 720px;
+  margin: 0;
+  color: var(--clinic-muted);
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+.feature-grid,
+.contact-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+
+.feature-grid article,
+.contact-cards article,
+.appointment-form {
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 16px 36px rgba(14, 32, 34, 0.07);
+  animation: innerFadeInUp 0.5s ease both;
+}
+
+.feature-grid article,
+.contact-cards article {
+  min-height: 220px;
+  padding: 28px 24px;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.feature-grid article:hover,
+.contact-cards article:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 22px 40px rgba(14, 32, 34, 0.12);
+}
+
+.feature-grid article:nth-child(2),
+.contact-cards article:nth-child(2) {
+  animation-delay: 60ms;
+}
+.feature-grid article:nth-child(3),
+.contact-cards article:nth-child(3) {
+  animation-delay: 120ms;
+}
+.feature-grid article:nth-child(4),
+.contact-cards article:nth-child(4) {
+  animation-delay: 180ms;
+}
+
+.feature-grid svg,
+.contact-cards svg {
+  margin-bottom: 20px;
+  color: var(--clinic-primary);
+  font-size: 2.3rem;
+  transition: transform 0.25s ease;
+}
+
+.feature-grid article:hover svg,
+.contact-cards article:hover svg {
+  transform: scale(1.12) rotate(-4deg);
+}
+
+.feature-grid h2,
+.contact-cards h2 {
+  margin: 0 0 12px;
+  font-size: 1.15rem;
+  font-weight: 900;
+}
+
+.feature-grid p,
+.contact-cards p {
+  margin: 0;
+  color: var(--clinic-muted);
+  line-height: 1.65;
+}
+
+.inner-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  margin-top: 28px;
+  padding: 0 22px;
+  border-radius: 5px;
+  background: linear-gradient(135deg, var(--clinic-primary), var(--clinic-primary-dark));
+  background-size: 160% auto;
+  background-position: left center;
+  color: #fff;
+  font-weight: 800;
+  text-decoration: none;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background-position 0.4s ease;
+}
+
+.inner-link:hover {
+  transform: translateY(-2px);
+  background-position: right center;
+  box-shadow: 0 12px 22px rgba(15, 118, 110, 0.28);
+}
+
+.inner-link:active {
+  transform: translateY(0) scale(0.97);
+}
+
+.appointment-layout,
+.contact-layout {
+  display: grid;
+  grid-template-columns: 0.85fr 1fr;
+  gap: 44px;
+  align-items: start;
+}
+
+.appointment-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  padding: 28px;
+}
+
+.appointment-form input,
+.appointment-form select,
+.appointment-form textarea {
+  min-width: 0;
+  width: 100%;
+  min-height: 46px;
+  border: 1px solid #e2e8dc;
+  border-radius: 5px;
+  padding: 12px 14px;
+  color: #222;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.appointment-form input:focus,
+.appointment-form select:focus,
+.appointment-form textarea:focus {
+  border-color: var(--clinic-primary);
+  box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.16);
+}
+
+.appointment-form textarea {
+  grid-column: 1 / -1;
+  min-height: 122px;
+  resize: vertical;
+}
+
+.appointment-form button {
+  grid-column: 1 / -1;
+  min-height: 46px;
+  border: 0;
+  border-radius: 5px;
+  background: linear-gradient(135deg, var(--clinic-primary), var(--clinic-primary-dark));
+  background-size: 160% auto;
+  background-position: left center;
+  color: #fff;
+  font-weight: 900;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background-position 0.4s ease;
+}
+
+.appointment-form button:hover {
+  transform: translateY(-2px);
+  background-position: right center;
+  box-shadow: 0 14px 26px rgba(15, 118, 110, 0.28);
+}
+
+.appointment-form button:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.inner-form-feedback {
+  grid-column: 1 / -1;
+  margin: 0;
+  color: var(--clinic-primary-dark);
+  font-weight: 800;
+  animation: innerFadeInUp 0.3s ease both;
+}
+
+.contact-cards {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (max-width: 992px) {
+  .feature-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .appointment-layout,
+  .contact-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .inner-page {
+    padding: 118px 0 82px;
+  }
+
+  .inner-hero {
+    margin-bottom: 32px;
+  }
+
+  .inner-hero h1 {
+    line-height: 1.08;
+  }
+
+  .appointment-form {
+    padding: 22px;
+  }
+}
+
+@media (max-width: 640px) {
+  .inner-page {
+    padding: 108px 0 72px;
+  }
+
+  .feature-grid,
+  .contact-cards,
+  .appointment-form {
+    grid-template-columns: 1fr;
+  }
+
+  .feature-grid article,
+  .contact-cards article {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 420px) {
+  .inner-page .container {
+    width: min(100% - 20px, 1120px);
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .inner-hero h1 {
+    font-size: clamp(2rem, 11vw, 2.45rem);
+  }
+
+  .inner-hero p {
+    font-size: 1rem;
+  }
+
+  .feature-grid article,
+  .contact-cards article,
+  .appointment-form {
+    padding: 20px;
+  }
+}
