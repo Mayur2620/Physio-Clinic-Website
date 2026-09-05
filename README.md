@@ -40,22 +40,27 @@ DB_PORT=${{MySQL.MYSQLPORT}}
 DB_USER=${{MySQL.MYSQLUSER}}
 DB_PASSWORD=${{MySQL.MYSQLPASSWORD}}
 DB_NAME=${{MySQL.MYSQLDATABASE}}
-CLIENT_ORIGIN=https://mayur2620.github.io
+CLIENT_ORIGIN=https://mayur2620.github.io,https://sparkly-florentine-778ebb.netlify.app
 JWT_SECRET=<long-random-secret>
 ADMIN_USERNAME=<your-admin-username>
 ADMIN_PASSWORD=<strong-admin-password>
 ```
 
-Also add the `TWILIO_*` values there if SMS notifications are required. Set
-the Railway service's root directory to `backend`; its `npm start` command
-initializes missing tables safely before starting the API. Once Railway gives
-you an API URL, create `frontend/.env.production` with:
+`CLIENT_ORIGIN` accepts a comma-separated list, so both the GitHub Pages and
+Netlify frontends can call the same API. Also add the `TWILIO_*` values there
+if SMS notifications are required. Set the Railway service's root directory
+to `backend`; its `npm start` command initializes missing tables safely
+before starting the API. Once Railway gives you an API URL, add an
+environment variable in the Netlify dashboard (Site configuration →
+Environment variables):
 
 ```
 VITE_API_URL=https://your-railway-domain/api
 ```
 
-Then run `npm run deploy` in `frontend/` to publish the GitHub Pages build.
+then trigger a redeploy (Netlify rebuilds automatically on the next push, or
+use "Trigger deploy" in the dashboard) — `VITE_API_URL` is inlined into the
+JS bundle at build time, so it only takes effect after a rebuild.
 
 ### Appointment SMS/WhatsApp notifications (optional)
 
