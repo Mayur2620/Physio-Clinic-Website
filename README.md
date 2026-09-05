@@ -27,6 +27,36 @@ Configure `backend/.env` (copy from `backend/.env.example`) with your MySQL
 credentials and the admin login you want (`ADMIN_USERNAME` / `ADMIN_PASSWORD`,
 used only the first time `npm run seed` creates the account).
 
+### Production deployment (Railway)
+
+Deploy `backend/` as a Railway service and add a MySQL service in the same
+Railway project. Railway exposes the database values as `MYSQLHOST`,
+`MYSQLPORT`, `MYSQLUSER`, `MYSQLPASSWORD`, and `MYSQLDATABASE`; map them to
+the API service's environment variables as follows:
+
+```
+DB_HOST=${{MySQL.MYSQLHOST}}
+DB_PORT=${{MySQL.MYSQLPORT}}
+DB_USER=${{MySQL.MYSQLUSER}}
+DB_PASSWORD=${{MySQL.MYSQLPASSWORD}}
+DB_NAME=${{MySQL.MYSQLDATABASE}}
+CLIENT_ORIGIN=https://mayur2620.github.io
+JWT_SECRET=<long-random-secret>
+ADMIN_USERNAME=<your-admin-username>
+ADMIN_PASSWORD=<strong-admin-password>
+```
+
+Also add the `TWILIO_*` values there if SMS notifications are required. Set
+the Railway service's root directory to `backend`; its `npm start` command
+initializes missing tables safely before starting the API. Once Railway gives
+you an API URL, create `frontend/.env.production` with:
+
+```
+VITE_API_URL=https://your-railway-domain/api
+```
+
+Then run `npm run deploy` in `frontend/` to publish the GitHub Pages build.
+
 ### Appointment SMS/WhatsApp notifications (optional)
 
 When an admin marks an appointment **Confirmed** or **Cancelled** in the admin
